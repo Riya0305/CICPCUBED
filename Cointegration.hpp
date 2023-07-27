@@ -23,8 +23,8 @@ int main() {
 
 //to find the logarithmic returns
 std::vector<double> log_returns;
-    for (size_t i = 1; i < close_prices.size(); ++i) {
-        double log_return = std::log(close_prices[i]) - std::log(close_prices[i - 1]);
+    for (size_t i = 1; i < adj_prices.size(); ++i) {
+        double log_return = std::log(adj_prices[i]) - std::log(adj_prices[i - 1]);
         log_returns.push_back(log_return);
     }
 
