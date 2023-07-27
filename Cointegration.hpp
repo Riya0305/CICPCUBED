@@ -15,7 +15,7 @@ int main() {
     io::CSVReader<1> in("Mastercard data.numbers");
 //creating a vector to store the adj close, so we can access it    
     std::vector<double> adj_prices;  
-    in.read_header(io::ignore_extra_column, "Close","Open",Volume","Date");
+    in.read_header(io::ignore_extra_column, "Close","Open","Volume","Date");
     double adj_close;
     while (in.read_row(adj_price)) {
         close_prices.push_back(adj_price);
