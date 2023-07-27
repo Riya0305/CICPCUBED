@@ -3,10 +3,31 @@
 #include <vector>
 #include <sstream>
 #include <ql/quantlib.hpp> // Include the QuantLib library
+#include "csv.h" //including csv parser header
+#include <cmath>
 
+//csv parser 
 //Quant Lib is a library used for modeling, trading
 using namespace QuantLib;
 using namespace std;
+
+int main() {
+    io::CSVReader<1> in("Mastercard data.numbers");
+//creating a vector to store the adj close, so we can access it    
+    std::vector<double> adj_prices;  
+    in.read_header(io::ignore_extra_column, "Close");
+    double adj_close;
+    while (in.read_row(close_price)) {
+        close_prices.push_back(close_price);
+    }
+
+//to find the logarithmic returns
+std::vector<double> log_returns;
+    for (size_t i = 1; i < close_prices.size(); ++i) {
+        double log_return = std::log(close_prices[i]) - std::log(close_prices[i - 1]);
+        log_returns.push_back(log_return);
+    }
+
 
 // Function to calculate the logarithmic returns of a price series
 vector<double> calculateLogReturns(const vector<double>& prices) {
